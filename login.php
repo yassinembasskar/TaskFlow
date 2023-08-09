@@ -12,7 +12,7 @@ $error = "";
 
         if (mysqli_num_rows($first_result) == 1) {
             $user = mysqli_fetch_assoc($first_result);
-            if (password_verify($password, $user['Password'])) {
+            if (!empty($user) && md5($password) === $user['Password']) {
                 $_SESSION['Email']=$username;
                 $_SESSION['Username'] = $user['Username'];
                 $_SESSION['userId'] = $user['UserID'];
@@ -23,7 +23,7 @@ $error = "";
             }
         } elseif (mysqli_num_rows($second_result) == 1) {
             $user = mysqli_fetch_assoc($second_result);
-            if (!empty($user) && password_verify($password, $user['Password'])) {
+            if (!empty($user) && md5($password) === $user['Password']) {
                 $_SESSION['Email']=$user['Email'];
                 $_SESSION['Username'] = $email;
                 $_SESSION['userId'] = $user['UserId'];
