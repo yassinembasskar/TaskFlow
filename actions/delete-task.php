@@ -1,6 +1,6 @@
 <?php 
 
-    include('config/constants.php');
+    include('../config.php');
     
     //Check task_id in URL
     if(isset($_GET['task_id']))
@@ -9,11 +9,7 @@
         //Get the Task ID
         $task_id = $_GET['task_id'];
         
-        //Connect Databaes
-        $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-        
-        //SElect Database
-        $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error());
+       
         
         //SQL Query to DELETE TASK
         $sql = "DELETE FROM tbl_tasks WHERE task_id=$task_id";

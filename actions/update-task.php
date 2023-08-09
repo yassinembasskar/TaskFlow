@@ -1,5 +1,5 @@
 <?php 
-    include('config/constants.php');
+    include('../config.php');
     
     //Check the Task ID in URL
     
@@ -7,12 +7,7 @@
     {
         //Get the Values from DAtabase
         $task_id = $_GET['task_id'];
-        
-        //Connect Database
-        $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-        
-        //Select Database
-        $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error());
+       
         
         //SQL Query to Get the detail of selected task
         $sql = "SELECT * FROM tbl_tasks WHERE task_id=$task_id";
@@ -32,19 +27,20 @@
             $list_id = $row['list_id'];
             $priority = $row['priority'];
             $deadline = $row['deadline'];
+            $DueDate = $row['DueDate'];
         }
     }
     else
     {
         //Redirect to Homepage
-        header("location:http://localhost/othmane_projet1/taskmanager/index.php");
+        header("location:../home.php");
     }
 ?>
 
 <html>
     <head>
         <title>Task Manager with PHP and MySQL</title>
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="../css/style.css" />
     </head>
     
     <body>
@@ -92,17 +88,13 @@
                         <select name="list_id">
                             
                             <?php 
-                                //Connect Database
-                                $conn2 = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-                                
-                                //SElect Database
-                                $db_select2 = mysqli_select_db($conn2, DB_NAME) or die(mysqli_error());
+                               
                                 
                                 //SQL Query to GET Lists
                                 $sql2 = "SELECT * FROM tbl_lists";
                                 
                                 //Execute Query
-                                $res2 = mysqli_query($conn2, $sql2);
+                                $res2 = mysqli_query($conn, $sql2);
                                 
                                 //Check if executed successfully or not
                                 if($res2==true)
@@ -160,7 +152,7 @@
                 </tr>
 
                 <tr>
-                    <td>DueDate: </td>
+                    <td>Notification Date: </td>
                     <td><input type="time" name="DueDate" value="<?php echo $DueDate; ?>" /></td>
                 </tr>
                 
@@ -191,11 +183,7 @@
         $deadline = $_POST['deadline'];
         $DueDate = $_POST['DueDate'];
         
-        //Connect Database
-        $conn3 = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-        
-        //SElect Database
-        $db_select3 = mysqli_select_db($conn3, DB_NAME) or die(mysqli_error());
+     
         
         //CREATE SQL QUery to Update TAsk
         $sql3 = "UPDATE tbl_tasks SET 

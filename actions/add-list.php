@@ -1,11 +1,11 @@
 <?php 
-    include('config/constants.php');
+    include('../config.php');
 ?>
 
 <html>
     <head>
         <title>Task Manager with PHP and MySQL</title>
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="../css/style.css" />
     </head>
     
     <body>
@@ -76,20 +76,7 @@
         $list_name = $_POST['list_name'];
         $list_description = $_POST['list_description'];
         
-        //Connect Database
-        $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-        
-        //Check whether the database connected or not
-        /*
-        if($conn==true)
-        {
-            echo "Database Connected";
-        }
-        */
-        
-        //SElect Database
-        $db_select = mysqli_select_db($conn, DB_NAME);
-        
+      
         //Check whether database is connected or not
         /*
         if($db_select==true)

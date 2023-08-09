@@ -1,11 +1,11 @@
 <?php 
-    include('config/constants.php');
+    include('../config.php');
 ?>
 
 <html>
     <head>
         <title>Task Manager with PHP and MySQL</title>
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="../css/style.css" />
     </head>
     
     <body>
@@ -50,11 +50,6 @@
                             
                             <?php 
                                 
-                                //Connect Database
-                                $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-                                
-                                //SElect Database
-                                $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error());
                                 
                                 //SQL query to get the list from table
                                 $sql = "SELECT * FROM tbl_lists";
@@ -112,6 +107,10 @@
                     <td>Deadline: </td>
                     <td><input type="date" name="deadline" /></td>
                 </tr>
+                <tr>
+                    <td>Notification Date: </td>
+                    <td><input type="time" name="DueDate" /></td>
+                </tr>
                 
                 <tr>
                     <td><input class="btn-primary btn-lg" type="submit" name="submit" value="SAVE" /></td>
@@ -139,24 +138,21 @@
         $list_id = $_POST['list_id'];
         $priority = $_POST['priority'];
         $deadline = $_POST['deadline'];
+        $DueDate = $_POST['DueDate'];
         
-        //Connect Database
-        $conn2 = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-        
-        //SElect Database
-        $db_select2 = mysqli_select_db($conn2, DB_NAME) or die(mysqli_error());
-        
+       
         //CReate SQL Query to INSERT DATA into DAtabase
         $sql2 = "INSERT INTO tbl_tasks SET 
             task_name = '$task_name',
             task_description = '$task_description',
             list_id = $list_id,
             priority = '$priority',
-            deadline = '$deadline'
+            deadline = '$deadline',
+            DueDate = $DueDate;
         ";
         
         //Execute Query
-        $res2 = mysqli_query($conn2, $sql2);
+        $res2 = mysqli_query($conn, $sql2);
         
         //Check whetehre the query executed successfully or not
         if($res2==true)
@@ -173,7 +169,7 @@
             //FAiled to Add TAsk
             $_SESSION['add_fail'] = "Failed to Add Task";
             //Redirect to Add TAsk Page
-            header('location:'.SITEURL.'add-task.php');
+            header('location:add-task.php');
         }
     }
 

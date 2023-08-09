@@ -1,5 +1,5 @@
 <?php 
-    include('config/constants.php');
+    include('config.php');
     //Get the listid from URL
     
     $list_id_url = $_GET['list_id'];
@@ -20,21 +20,17 @@
         <!-- Menu Starts Here -->
         <div class="menu">
         
-            <a href="<?php echo SITEURL; ?>">Home</a>
+            <a href="<?php  ?>">Home</a>
             
             <?php 
                 
-                //Comment Displaying Lists From Database in ourMenu
-                $conn2 = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-                
-                //SELECT DATABASE
-                $db_select2 = mysqli_select_db($conn2, DB_NAME) or die(mysqli_error());
+            
                 
                 //Query to Get the Lists from database
                 $sql2 = "SELECT * FROM tbl_lists";
                 
                 //Execute Query
-                $res2 = mysqli_query($conn2, $sql2);
+                $res2 = mysqli_query($conn, $sql2);
                 
                 //CHeck whether the query executed or not
                 if($res2==true)
@@ -46,7 +42,7 @@
                         $list_name = $row2['list_name'];
                         ?>
                         
-                        <a href="<?php echo SITEURL; ?>list-task.php?list_id=<?php echo $list_id; ?>"><?php echo $list_name; ?></a>
+                        <a href="<?php  ?>list-task.php?list_id=<?php echo $list_id; ?>"><?php echo $list_name; ?></a>
                         
                         <?php
                         
@@ -57,14 +53,14 @@
             
             
             
-            <a href="<?php echo SITEURL; ?>manage-list.php">Manage Lists</a>
+            <a href="<?php  ?>manage-list.php">Manage Lists</a>
         </div>
         <!-- Menu Ends Here -->
         
         
         <div class="all-task">
         
-            <a class="btn-primary" href="<?php echo SITEURL; ?>add-task.php">Add Task</a>
+            <a class="btn-primary" href="<?php  ?>add-task.php">Add Task</a>
             
             
             <table class="tbl-full">
@@ -79,9 +75,7 @@
                 
                 <?php 
                 
-                    $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-                    
-                    $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error());
+                
                     
                     //SQL QUERY to display tasks by list selected
                     $sql = "SELECT * FROM tbl_tasks WHERE list_id=$list_id_url";
@@ -104,6 +98,7 @@
                                 $task_name = $row['task_name'];
                                 $priority = $row['priority'];
                                 $deadline = $row['deadline'];
+                                $DueDate = $row['DueDate'];
                                 ?>
                                 
                                 <tr>
@@ -111,10 +106,11 @@
                                     <td><?php echo $task_name; ?></td>
                                     <td><?php echo $priority; ?></td>
                                     <td><?php echo $deadline; ?></td>
+                                    <td><?php echo $DueDate; ?></td>
                                     <td>
-                                        <a href="<?php echo SITEURL; ?>update-task.php?task_id=<?php echo $task_id; ?>">Update </a>
+                                        <a href="<?php  ?>update-task.php?task_id=<?php echo $task_id; ?>">Update </a>
                                     
-                                    <a href="<?php echo SITEURL; ?>delete-task.php?task_id=<?php echo $task_id; ?>">Delete</a>
+                                    <a href="<?php  ?>delete-task.php?task_id=<?php echo $task_id; ?>">Delete</a>
                                     </td>
                                 </tr>
                                 

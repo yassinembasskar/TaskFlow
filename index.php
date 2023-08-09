@@ -116,7 +116,7 @@ https://templatemo.com/tm-563-seo-dream
                     }
                 ?>
               
-              <li class="scroll-to-section"><div class="main-blue-button"><a href="taskmanager">Start managing your tasks</a></div></li> 
+              <li class="scroll-to-section"><div class="main-blue-button"><a href="home.php">Start managing your tasks</a></div></li> 
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>
