@@ -1,6 +1,6 @@
 <?php
     //Include constants.php
-    include('config/constants.php');
+    include('../config.php');
     //echo "Delete List Page";
     
     //Check whether the list_id is assigned or not
@@ -11,11 +11,7 @@
         //Get the list_id value from URL or Get Method
         $list_id = $_GET['list_id'];
         
-        //Connect to the Database
-        $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-        
-        //Select Database
-        $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error());
+      
         
         //Write the Query to DELETE List from the Database
         $sql = "DELETE FROM tbl_lists WHERE list_id=$list_id";

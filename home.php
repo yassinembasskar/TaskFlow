@@ -23,17 +23,13 @@
         
         <?php 
             
-            //Comment Displaying Lists From Database in ourMenu
-            $conn2 = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-            
-            //SELECT DATABASE
-            $db_select2 = mysqli_select_db($conn2, DB_NAME) or die(mysqli_error());
+        
             
             //Query to Get the Lists from database
             $sql2 = "SELECT * FROM tbl_lists";
             
             //Execute Query
-            $res2 = mysqli_query($conn2, $sql2);
+            $res2 = mysqli_query($conn, $sql2);
             
             //CHeck whether the query executed or not
             if($res2==true)
@@ -45,7 +41,7 @@
                     $list_name = $row2['list_name'];
                     ?>
                     
-                    <a href="<?php echo SITEURL; ?>list-task.php?list_id=<?php echo $list_id; ?>"><?php echo $list_name; ?></a>
+                    <a href="<?php  ?>list-task.php?list_id=<?php echo $list_id; ?>"><?php echo $list_name; ?></a>
                     
                     <?php
                     
@@ -94,7 +90,7 @@
     
     <div class="all-tasks">
         
-        <a class="btn-primary" href="<?php SITEURL; ?>add-task.php">Add Task</a>
+        <a class="btn-primary" href="<?php  ?>add-task.php">Add Task</a>
         
         <table class="tbl-full">
         
@@ -109,11 +105,7 @@
             
             <?php 
             
-                //Connect Database
-                $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-                
-                //Select Database
-                $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error());
+              
                 
                 //Create SQL Query to Get DAta from Databse
                 $sql = "SELECT * FROM tbl_tasks";
@@ -142,6 +134,7 @@
                             $priority = $row['priority'];
                             $deadline = $row['deadline'];
                             $DueDate = $row['DueDate'];
+                            $Actions = $row['Actions'];
                             ?>
                             
                             <tr>
@@ -150,6 +143,7 @@
                                 <td><?php echo $priority; ?></td>
                                 <td><?php echo $deadline; ?></td>
                                 <td><?php echo $DueDate; ?></td>
+                                <td><?php echo $Actions; ?></td>
                                 <td>
                                     <a href="update-task.php?task_id=<?php echo $task_id; ?>">Update </a>
                                     
