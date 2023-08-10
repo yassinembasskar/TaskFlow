@@ -44,7 +44,7 @@
 <html>
 
     <head>
-        <title>Task Manager with PHP and MySQL</title>
+        <title>Update List</title>
         <link rel="stylesheet" href="../css/style.css" />
     </head>
     
@@ -58,8 +58,9 @@
         
         
             
-            <a class="btn-secondary" href="http://localhost/othmane_projet1/taskmanager/index.php">Home</a>
-            <a class="btn-secondary" href="http://localhost/othmane_projet1/taskmanager/manage-list.php">Manage Lists</a>
+            <a class="btn-secondary" href="index.php">Home</a>
+            <a class="btn-secondary" href="manage-tasks.php">Tasks</a>
+            <a class="btn-secondary" href="manage-lists.php">Lists</a>
             
 
         
