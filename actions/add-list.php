@@ -90,7 +90,6 @@
             list_name = '$list_name',
             list_description = '$list_description',
             UserID = '$userID'";
-        ";
         
         //Execute Query and Insert into Database
         $res = mysqli_query($conn, $sql);
