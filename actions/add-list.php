@@ -1,5 +1,23 @@
 <?php 
     include('../config.php');
+
+    if(isset($_POST['submit']))
+    {
+        $list_name = $_POST['list_name'];
+        $list_description = $_POST['list_description'];
+        
+        $userID = $_SESSION["userId"];
+        $sql = "INSERT INTO tbl_lists SET 
+            list_name = '$list_name',
+            list_description = '$list_description',
+            UserID = '$userID'";
+        
+        //Execute Query and Insert into Database
+        mysqli_query($conn, $sql);
+    
+        header("location:../manage-list.php");
+    }
+
 ?>
 
 <html>
@@ -14,29 +32,10 @@
     
         <h1>TASK MANAGER</h1>
         
-        <a class="btn-secondary" href="index.php">home</a>
-        <a class="btn-secondary" href="home.php">Tasks</a>
-        <a class="btn-secondary" href="manage-lists.php">Lists</a>
+        <a class="btn-secondary" href="../home.php">home</a>
         
         
         <h3>Add List Page</h3>
-        
-        <p>
-        
-        <?php 
-        
-            //Check whether the session is created or not
-            if(isset($_SESSION['add_fail']))
-            {
-                //display session message
-                echo $_SESSION['add_fail'];
-                //Remove the message after displaying once
-                unset($_SESSION['add_fail']);
-            }
-        
-        ?>
-        
-        </p>
         
         <!-- Form to Add List Starts Here -->
         
@@ -59,67 +58,6 @@
             </table>
             
         </form>
-        
-        <!-- Form to Add List Ends Here -->
         </div>
     </body>
 </html>
-
-
-<?php 
-
-    //Check whether the form is submitted or not
-    if(isset($_POST['submit']))
-    {
-        //echo "Form Submitted";
-        
-        //Get the values from form and save it in variables
-        $list_name = $_POST['list_name'];
-        $list_description = $_POST['list_description'];
-        
-        //Check whether database is connected or not
-        /*
-        if($db_select==true)
-        {
-            echo "Database SElected";
-        }
-        */
-        //SQL Query to Insert data into database
-        $userID = $_SESSION["UserID"];
-        $sql = "INSERT INTO tbl_lists SET 
-            list_name = '$list_name',
-            list_description = '$list_description',
-            UserID = '$userID'";
-        
-        //Execute Query and Insert into Database
-        $res = mysqli_query($conn, $sql);
-        
-        //Check whether the query executed successfully or not
-        if($res==true)
-        {
-            //Data inserted successfully
-            //echo "Data Inserted";
-            
-            //Create a SESSION VAriable to Display message
-            $_SESSION['add'] = "List Added Successfully";
-            
-            //Redirect to Manage List Page
-            header("location:../manage-list.php");
-            
-            
-        }
-        else
-        {
-            //Failed to insert data
-            //echo "Failed to Insert Data";
-            
-            //Create SEssion to save message
-            $_SESSION['add_fail'] = "Failed to Add List";
-            
-            //REdirect to Same Page
-            header("location:../manage-list.php");
-        }
-        
-    }
-
-?>

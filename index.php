@@ -108,15 +108,16 @@ https://templatemo.com/tm-563-seo-dream
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <?php
-                    if (isset($_SESSION['username'])) {
+                    if (isset($_SESSION['Username'])) {
                         echo '<li class="scroll-to-section"><a href="logout.php">Log Out</a></li>';
+                        echo '<li class="scroll-to-section"><div class="main-blue-button"><a href="home.php">Start managing your tasks</a></div></li>';
                     } else {
                         echo '<li class="scroll-to-section"><a href="login.php">Log In</a></li>';
                         echo '<li class="scroll-to-section"><a href="signup.php">Sign Up</a></li>';
+                        echo '<li class="scroll-to-section"></li>';
                     }
                 ?>
               
-              <li class="scroll-to-section"><div class="main-blue-button"><a href="home.php">Start managing your tasks</a></div></li> 
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>
@@ -143,7 +144,15 @@ https://templatemo.com/tm-563-seo-dream
                   </div>
                   <div class="col-lg-12">
                     <div class="main-green-button scroll-to-section">
-                      <a href="taskmanager">Get Started</a>
+                      <?php
+                    if (isset($_SESSION['username'])) {
+                        echo '<a href="home.php">Get Started</a>';
+                        
+                    } else {
+                        echo '<a href="signup.php">Get Started</a>';
+                    }
+                ?>
+                      
                     </div>
                   </div>
                 </div>
