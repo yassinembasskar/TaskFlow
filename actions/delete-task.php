@@ -24,7 +24,7 @@
             $_SESSION['delete'] = "Task Deleted Successfully.";
             
             //redirect to Homepage
-            header('location:home.php');
+            header('location:../home.php');
         }
         else
         {
@@ -32,14 +32,14 @@
             $_SESSION['delete_fail'] = "Failed to Delete Task";
             
             //Redirect to Home PAge
-            header('location:home.php');
+            header('location:../home.php');
         }
         
     }
     else
     {
         //Redirect to Home
-        header('location:home.php');
+        header('location:../home.php');
     }
 
 ?>

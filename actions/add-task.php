@@ -24,32 +24,8 @@ if(isset($_POST['submit']))
     
     //Execute Query
     mysqli_query($conn, $sql2);
-   /* $sql4='SELECT * FROM tbl_tasks WHERE  UserID ='.$user_id.' AND 
-    task_name = '.$task_name.' AND
-    task_description = '.$task_description.' AND
-    priority = '.$priority.' AND
-    deadline = '.$deadline.' AND
-    DueDate = '.$DueDate.'';
-    $res4 = mysqli_query($conn, $sql4);
-    if ($res4) {
-        $row = mysqli_fetch_assoc($res4);
-        
-        if ($row) {
-            $task_id = $row['task_id'];
-            }}*/
-            $task_id=$conn->insert_id;
-
-    if($list_id==""){
-        $list_id=NULL;
-
-    }
-    else{
-        $sql3 = 'INSERT INTO contient SET 
-        task_id ='.$task_id.',
-        list_id = '.$list_id.'
-    ';
-    $res3 = mysqli_query($conn, $sql3);
-    }
+   
+           
     
     //Check whetehre the query executed successfully or not
   
@@ -75,18 +51,6 @@ if(isset($_POST['submit']))
         
         <h3>Add Task Page</h3>
         
-        <p>
-            <?php 
-            
-                if(isset($_SESSION['add_fail']))
-                {
-                    echo $_SESSION['add_fail'];
-                    unset($_SESSION['add_fail']);
-                }
-            
-            ?>
-        </p>
-        
         <form method="POST" action="">
             
             <table class="tbl-half">
@@ -110,50 +74,7 @@ if(isset($_POST['submit']))
                     </td>
                 </tr>
                 
-                <tr>
-                    <td>Select List: </td>
-                    <td>
-                    
-                        <select name="list_id">
-                            <option value=""></option>
-                            <?php 
-                                
-                                
-                                //SQL query to get the list from table
-                                $user_id=$_SESSION["userId"];
-                                $sql = "SELECT * FROM tbl_lists where UserID = '$user_id'";
-                                
-                                //Execute Query
-                                $res = mysqli_query($conn, $sql);
-                                
-                                //Check whether the query executed or not
-                                if($res==true)
-                                {
-                                    //Create variable to Count Rows
-                                    $count_rows = mysqli_num_rows($res);
-                                    
-                                    //If there is data in database then display all in dropdows else display None as option
-                                    if($count_rows>0)
-                                    {
-                                        //display all lists on dropdown from database
-                                        while($row=mysqli_fetch_assoc($res))
-                                        {
-                                            $list_id = $row['list_id'];
-                                            $list_name = $row['list_name'];
-                                            ?>
-                                            <option value="<?php echo $list_id ?>"><?php echo $list_name; ?></option>
-                                            <?php
-                                        }
-                                    }
-                                   
-                                    
-                                }
-                            ?>
-                        
-                            
-                        </select>
-                    </td>
-                </tr>
+                
                 
                 <tr>
                     <td>Priority: </td>
