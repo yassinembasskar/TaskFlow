@@ -32,82 +32,11 @@
         else
         {
             //Go Back to Manage List Page
-            header('location:http://localhost/othmane_projet1/taskmanager/manage-list.php');
+            header('location: ../manage-list.php');
         }
     }
 
 ?>
-
-
-
-
-<html>
-
-    <head>
-        <title>Update List</title>
-        <link rel="stylesheet" href="../css/style.css" />
-    </head>
-    
-    <body>
-        
-        
-        <div class="wrapper">
-        
-        
-        <h1>TASK MANAGER</h1>
-        
-        
-            
-            <a class="btn-secondary" href="index.php">Home</a>
-            <a class="btn-secondary" href="manage-tasks.php">Tasks</a>
-            <a class="btn-secondary" href="manage-lists.php">Lists</a>
-            
-
-        
-        
-        <h3>Update List Page</h3>
-        
-        <p>
-            <?php 
-                //Check whether the session is set or not
-                if(isset($_SESSION['update_fail']))
-                {
-                    echo $_SESSION['update_fail'];
-                    unset($_SESSION['update_fail']);
-                }
-            ?>
-        </p>
-        
-        <form method="POST" action="">
-        
-            <table class="tbl-half">
-                <tr>
-                    <td>List Name: </td>
-                    <td><input type="text" name="list_name" value="<?php echo $list_name; ?>" required="required" /></td>
-                </tr>
-                
-                <tr>
-                    <td>List Description: </td>
-                    <td>
-                        <textarea name="list_description">
-                            <?php echo $list_description; ?>
-                        </textarea>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td><input class="btn-lg btn-primary" type="submit" name="submit" value="UPDATE" /></td>
-                </tr>
-            </table>
-            
-        </form>
-        
-        </div>
-        
-    
-    </body>
-
-</html>
 
 
 <?php 
@@ -141,19 +70,71 @@
             $_SESSION['update'] = "List Updated Successfully";
             
             //Redirect to Manage List PAge
-            header("location:http://localhost/othmane_projet1/taskmanager/manage-list.php");
-        }
-        else
-        {
-            //FAiled to Update
-            //SEt Session Message
-            $_SESSION['update_fail'] = "Failed to Update List";
-            //Redirect to the Update List PAge
-            header('location:http://localhost/othmane_projet1/taskmanager/manage-list.php?list_id='.$list_id);
+            header("location: ../manage-list.php");
         }
         
     }
 ?>
+
+
+
+<html>
+
+    <head>
+        <title>Update List</title>
+        <link rel="stylesheet" href="../css/style.css" />
+    </head>
+    
+    <body>
+        
+        
+        <div class="wrapper">
+        
+        
+        <h1>TASK MANAGER</h1>
+        
+        
+            
+            <a class="btn-secondary" href="index.php">Home</a>
+            <a class="btn-secondary" href="manage-tasks.php">Tasks</a>
+            <a class="btn-secondary" href="manage-lists.php">Lists</a>
+            
+
+        
+        
+        <h3>Update List Page</h3>
+        
+        <form method="POST" action="">
+        
+            <table class="tbl-half">
+                <tr>
+                    <td>List Name: </td>
+                    <td><input type="text" name="list_name" value="<?php echo $list_name; ?>" required="required" /></td>
+                </tr>
+                
+                <tr>
+                    <td>List Description: </td>
+                    <td>
+                        <textarea name="list_description">
+                            <?php echo $list_description; ?>
+                        </textarea>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><input class="btn-lg btn-primary" type="submit" name="submit" value="UPDATE" /></td>
+                </tr>
+            </table>
+            
+        </form>
+        
+        </div>
+        
+    
+    </body>
+
+</html>
+
 
 
 
