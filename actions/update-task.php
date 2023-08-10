@@ -24,7 +24,7 @@
             //Get the Individual Value
             $task_name = $row['task_name'];
             $task_description = $row['task_description'];
-            $list_id = $row['list_id'];
+            $category = $_POST['category'];
             $priority = $row['priority'];
             $deadline = $row['deadline'];
             $DueDate = $row['DueDate'];
@@ -50,20 +50,12 @@
         <h1>TASK MANAGER</h1>
         
         <p>
-            <a class="btn-secondary" href="index.php">Home</a>
+            <a class="btn-secondary" href="../home.php">Home</a>
         </p>
         
         <h3>Update Task Page</h3>
         
-        <p>
-            <?php 
-                if(isset($_SESSION['update_fail']))
-                {
-                    echo $_SESSION['update_fail'];
-                    unset($_SESSION['update_fail']);
-                }
-            ?>
-        </p>
+       
         
         <form method="POST" action="">
         
@@ -76,64 +68,21 @@
                 <tr>
                     <td>Task Description: </td>
                     <td>
-                        <textarea name="task_description">
-                        <?php echo $task_description; ?>
+                        <textarea name="task_description"><?php echo $task_description; ?>
                         </textarea>
                     </td>
                 </tr>
-                
                 <tr>
-                    <td>Select List: </td>
+                    <td>Category: </td>
                     <td>
-                        <select name="list_id">
-                            
-                            <?php 
-                               
-                                
-                                //SQL Query to GET Lists
-                                $sql2 = "SELECT * FROM tbl_lists";
-                                
-                                //Execute Query
-                                $res2 = mysqli_query($conn, $sql2);
-                                
-                                //Check if executed successfully or not
-                                if($res2==true)
-                                {
-                                    //Display the Lists
-                                    //Count Rows
-                                    $count_rows2 = mysqli_num_rows($res2);
-                                    
-                                    //Check whether list is added or not
-                                    if($count_rows2>0)
-                                    {
-                                        //Lists are Added
-                                        while($row2=mysqli_fetch_assoc($res2))
-                                        {
-                                            //Get individual value
-                                            $list_id_db = $row2['list_id'];
-                                            $list_name = $row2['list_name'];
-                                            ?>
-                                            
-                                            <option <?php if($list_id_db==$list_id){echo "selected='selected'";} ?> value="<?php echo $list_id_db; ?>"><?php echo $list_name; ?></option>
-                                            
-                                            <?php
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //No List Added
-                                        //Display None as option
-                                        ?>
-                                        <option <?php if($list_id=0){echo "selected='selected'";} ?> value="0">None</option>p
-                                        <?php
-                                    }
-                                }
-                            ?>
-                            
-                            
+                        <select name="category">
+                            <option value="1">To Do</option>
+                            <option value="2">Doing</option>
+                            <option value="3">Done</option>
                         </select>
                     </td>
                 </tr>
+                
                 
                 <tr>
                     <td>Priority: </td>
@@ -198,7 +147,7 @@
         ";
         
         //Execute Query
-        $res3 = mysqli_query($conn3, $sql3);
+        $res3 = mysqli_query($conn, $sql3);
         
         //CHeck whether the Query Executed of Not
         if($res3==true)
@@ -207,7 +156,7 @@
             $_SESSION['update'] = "Task Updated Successfully.";
             
             //Redirect to Home Page
-            header("location:http://localhost/othmane_projet1/taskmanager/index.php");
+            header("location:../home.php");
         }
         else
         {
@@ -215,7 +164,7 @@
             $_SESSION['update_fail'] = "Failed to Update Task";
             
             //Redirect to this Page
-            header("location:http://localhost/othmane_projet1/taskmanager/index.php?task_id=.$task_id");
+            header("location:../home.php?task_id=.$task_id");
         }
         
         

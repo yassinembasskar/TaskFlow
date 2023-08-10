@@ -19,7 +19,7 @@
     <!-- Menu Starts Here -->
     <div class="menu">
     
-        <a href="../index.php">Home</a>
+        <a href="index.php">Home</a>
         
         <?php 
             
@@ -97,6 +97,7 @@
             <tr>
                 <th>S.N.</th>
                 <th>Task Name</th>
+                <th>Description</th>
                 <th>Priority</th>
                 <th>Deadline</th>
                 <th>DueDate</th>
@@ -108,7 +109,7 @@
               
                 
                 //Create SQL Query to Get DAta from Databse
-                $sql = "SELECT * FROM tbl_tasks";
+                $sql = "SELECT * FROM tbl_tasks WHERE UserID=".$_SESSION['userId']."" ;
                 
                 //Execute Query
                 $res = mysqli_query($conn, $sql);
@@ -131,6 +132,7 @@
                         {
                             $task_id = $row['task_id'];
                             $task_name = $row['task_name'];
+                            $task_description = $row['task_description'];
                             $priority = $row['priority'];
                             $deadline = $row['deadline'];
                             $DueDate = $row['DueDate'];
@@ -140,14 +142,15 @@
                             <tr>
                                 <td><?php echo $sn++; ?>. </td>
                                 <td><?php echo $task_name; ?></td>
+                                <td><?php echo $task_description; ?></td>
                                 <td><?php echo $priority; ?></td>
                                 <td><?php echo $deadline; ?></td>
                                 <td><?php echo $DueDate; ?></td>
                                 <td><?php echo $Actions; ?></td>
                                 <td>
-                                    <a href="update-task.php?task_id=<?php echo $task_id; ?>">Update </a>
+                                    <a href="actions/update-task.php?task_id=<?php echo $task_id; ?>">Update </a>
                                     
-                                    <a href="delete-task.php?task_id=<?php echo $task_id; ?>">Delete</a>
+                                    <a href="actions/delete-task.php?task_id=<?php echo $task_id; ?>">Delete</a>
                                 
                                 </td>
                             </tr>

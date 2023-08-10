@@ -104,7 +104,7 @@
             $_SESSION['add'] = "List Added Successfully";
             
             //Redirect to Manage List Page
-            header("location:manage-list.php");
+            header("location:../manage-list.php");
             
             
         }
@@ -117,7 +117,7 @@
             $_SESSION['add_fail'] = "Failed to Add List";
             
             //REdirect to Same Page
-            header("location:manage-list.php");
+            header("location:../manage-list.php");
         }
         
     }

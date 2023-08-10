@@ -266,21 +266,23 @@ https://templatemo.com/tm-563-seo-dream
   </div> -->
   
 
-  <footer>
-    <div class="footer-content">
-      <div class="contact">
-        <h3>Contact Us:</h3>
-        <p>Email: othmangam50@gmail.com</p>
-        <p>Phone: +212 762483086</p>
-      </div>
-      <div class="taskflow-description">
-        <h3>Task Flow</h3>
-        <p>TaskFlow est une application web conçue pour aider les utilisateurs à gérer efficacement leurs tâches et listes de choses à faire.</p>
+  <footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <p class="footer-text">
+          © 2023 TaskFlow by Othmane. All rights reserved.
+          <br>
+          Contact us: <a href="mailto:othmangam50@gmail.com">othmangam50@gmail.com</a> | Phone: 07 62 48 30 86
+          <br>
+          Follow us: 
+          <a href="https://www.linkedin.com/in/othman-gamghal-44763026b" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+          <a href="https://github.com/Gamghal" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
       </div>
     </div>
-    <p>&copy; 2023 Othmane Gamghal.</p>
-  </footer>
-
+  </div>
+</footer>
 
  
   <!-- Scripts -->
