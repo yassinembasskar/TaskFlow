@@ -19,7 +19,7 @@
             $_SESSION['username'] = $username;
             $_SESSION['Email'] = $email;
             $_SESSION['UserId'] = $user['UserID'];
-            header("Location: home.php");
+            header("Location: index.php");
             exit();
         }
     }
