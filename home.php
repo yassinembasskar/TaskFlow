@@ -49,9 +49,12 @@
             }
             
         ?>
+         <a href="actions/add-task.php">To Do</a>
+         <a href="actions/add-task.php">Doing</a>
+         <a href="actions/add-task.php">Done</a>
         
         
-        <a href="manage-list.php">Manage Lists</a>
+        <a href="manage-lists.php">Manage Lists</a>
     </div>
     <!-- Menu Ends Here -->
     
@@ -90,7 +93,7 @@
     
     <div class="all-tasks">
         
-        <a class="btn-primary" href="<?php  ?>add-task.php">Add Task</a>
+        <a class="btn-primary" href="<?php  ?>actions/add-task.php">Add Task</a>
         
         <table class="tbl-full">
         
@@ -136,7 +139,7 @@
                             $priority = $row['priority'];
                             $deadline = $row['deadline'];
                             $DueDate = $row['DueDate'];
-                            $Actions = $row['Actions'];
+                           
                             ?>
                             
                             <tr>
@@ -146,7 +149,7 @@
                                 <td><?php echo $priority; ?></td>
                                 <td><?php echo $deadline; ?></td>
                                 <td><?php echo $DueDate; ?></td>
-                                <td><?php echo $Actions; ?></td>
+                                
                                 <td>
                                     <a href="actions/update-task.php?task_id=<?php echo $task_id; ?>">Update </a>
                                     

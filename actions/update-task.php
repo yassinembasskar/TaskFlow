@@ -24,7 +24,7 @@
             //Get the Individual Value
             $task_name = $row['task_name'];
             $task_description = $row['task_description'];
-            $category = $_POST['category'];
+            
             $priority = $row['priority'];
             $deadline = $row['deadline'];
             $DueDate = $row['DueDate'];
@@ -127,7 +127,7 @@
         //Get the CAlues from Form
         $task_name = $_POST['task_name'];
         $task_description = $_POST['task_description'];
-        $list_id = $_POST['list_id'];
+        $categoryID = $_POST['category'];
         $priority = $_POST['priority'];
         $deadline = $_POST['deadline'];
         $DueDate = $_POST['DueDate'];
@@ -138,7 +138,7 @@
         $sql3 = "UPDATE tbl_tasks SET 
         task_name = '$task_name',
         task_description = '$task_description',
-        list_id = '$list_id',
+        categoryID = '$categoryID',
         priority = '$priority',
         deadline = '$deadline',
         DueDate = '$DueDate'
