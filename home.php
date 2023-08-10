@@ -18,8 +18,8 @@
     <div class="menu">
         <a href="index.php">Home</a>
         <a href="actions/add-task.php">To Do</a>
-         <a href="actions/add-task.php">Doing</a>
-         <a href="actions/add-task.php">Done</a>
+        <a href="actions/add-task.php">Doing</a>
+        <a href="actions/add-task.php">Done</a>
 
         <a href="manage-list.php">Manage Lists</a>
     </div>
