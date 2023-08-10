@@ -5,7 +5,7 @@
         $username = $_POST['username'];
         $email = $_POST["email"];
         $password = $_POST["password"];
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashedPassword = md5($password);
         $select_1 = "SELECT * FROM users WHERE Email = '$email' OR Username = '$username'";
         $result_1 = mysqli_query($conn, $select_1);
         if (mysqli_num_rows($result_1) > 0) {

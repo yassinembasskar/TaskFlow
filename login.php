@@ -26,7 +26,7 @@ $error = "";
             if (!empty($user) && md5($password) === $user['Password']) {
                 $_SESSION['Email']=$user['Email'];
                 $_SESSION['Username'] = $email;
-                $_SESSION['userId'] = $user['UserId'];
+                $_SESSION['userId'] = $user['UserID'];
                 header("Location: home.php");
                 exit();
             } else {

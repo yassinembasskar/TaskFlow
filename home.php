@@ -41,7 +41,7 @@
                     $list_name = $row2['list_name'];
                     ?>
                     
-                    <a href="<?php  ?>list-task.php?list_id=<?php echo $list_id; ?>"><?php echo $list_name; ?></a>
+                    <a href="list-task.php?list_id=<?php echo $list_id; ?>"><?php echo $list_name; ?></a>
                     
                     <?php
                     
@@ -90,7 +90,7 @@
     
     <div class="all-tasks">
         
-        <a class="btn-primary" href="<?php  ?>add-task.php">Add Task</a>
+        <a class="btn-primary" href="actions/add-task.php">Add Task</a>
         
         <table class="tbl-full">
         
@@ -134,7 +134,7 @@
                             $priority = $row['priority'];
                             $deadline = $row['deadline'];
                             $DueDate = $row['DueDate'];
-                            $Actions = $row['Actions'];
+                          
                             ?>
                             
                             <tr>
@@ -143,7 +143,7 @@
                                 <td><?php echo $priority; ?></td>
                                 <td><?php echo $deadline; ?></td>
                                 <td><?php echo $DueDate; ?></td>
-                                <td><?php echo $Actions; ?></td>
+                               
                                 <td>
                                     <a href="update-task.php?task_id=<?php echo $task_id; ?>">Update </a>
                                     

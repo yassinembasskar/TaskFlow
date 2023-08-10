@@ -26,21 +26,21 @@
             $_SESSION['delete'] = "List Deleted Successfully";
             
             //Redirect to Manage List Page
-            header("Location:http://localhost/othmane_projet1/taskmanager/manage-list.php");
+            header("Location:../manage-list.php");
             exit(); // Make sure to include exit() after redirection to prevent further code execution
         }
         else
         {
             //Failed to Delete List
             $_SESSION['delete_fail'] = "Failed to Delete List.";
-            header("Location:http://localhost/othmane_projet1/taskmanager/manage-list.php");
+            header("Location:../manage-list.php");
             exit(); // Make sure to include exit() after redirection to prevent further code execution
         }
     }
     else
     {
         //Redirect to Manage List Page
-        header("Location: http://localhost/othmane_projet1/taskmanager/manage-list.php");
+        header("Location:../manage-list.php");
         exit(); // Make sure to include exit() after redirection to prevent further code execution
     }
 ?>

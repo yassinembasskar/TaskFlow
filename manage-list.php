@@ -17,7 +17,7 @@ include('config.php');
         <h1>TASK MANAGER</h1>
         
         
-        <a class="btn-secondary" href="index.php">Home</a>
+        <a class="btn-secondary" href="home.php">Home</a>
         
         <h3>Manage Lists Page</h3>
         
@@ -61,7 +61,7 @@ include('config.php');
         <!-- Table to display lists starts here -->
         <div class="all-lists">
             
-            <a class="btn-primary" href="add-list.php">Add List</a>
+            <a class="btn-primary" href="actions/add-list.php">Add List</a>
             
             <table class="tbl-half">
                 <tr>
@@ -73,12 +73,7 @@ include('config.php');
                 
                 <?php 
                 
-                    //Connect the DAtabase
-                    $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
-                    
-                    //Select Database
-                    $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error());
-                    
+                   
                     //SQl Query to display all data fromo database
                     $sql = "SELECT * FROM tbl_lists";
                     
