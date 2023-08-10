@@ -39,7 +39,7 @@
 
 <html>
     <head>
-        <title>Task Manager with PHP and MySQL</title>
+        <title>Update Task</title>
         <link rel="stylesheet" href="../css/style.css" />
     </head>
     

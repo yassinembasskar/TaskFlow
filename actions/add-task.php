@@ -4,7 +4,7 @@
 
 <html>
     <head>
-        <title>Task Manager with PHP and MySQL</title>
+        <title>Add Task</title>
         <link rel="stylesheet" href="../css/style.css" />
     </head>
     
@@ -23,7 +23,7 @@
             
                 if(isset($_SESSION['add_fail']))
                 {
-                    echo $_SESSION['add_fail'];
+                    echo '<p>'.$_SESSION['add_fail'].'</p>';
                     unset($_SESSION['add_fail']);
                 }
             
@@ -146,9 +146,7 @@
             task_name = '$task_name',
             task_description = '$task_description',
             list_id = $list_id,
-            priority = '$priority',
-            deadline = '$deadline',
-            DueDate = $DueDate;
+            priority = '$priority'
         ";
         
         //Execute Query

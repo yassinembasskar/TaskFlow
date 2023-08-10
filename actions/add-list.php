@@ -4,7 +4,7 @@
 
 <html>
     <head>
-        <title>Task Manager with PHP and MySQL</title>
+        <title>Add List</title>
         <link rel="stylesheet" href="../css/style.css" />
     </head>
     
@@ -14,8 +14,9 @@
     
         <h1>TASK MANAGER</h1>
         
-        <a class="btn-secondary" href="index.php">Home</a>
-        <a class="btn-secondary" href="manage-list.php">Manage Lists</a>
+        <a class="btn-secondary" href="index.php">home</a>
+        <a class="btn-secondary" href="manage-tasks.php">Tasks</a>
+        <a class="btn-secondary" href="manage-lists.php">Lists</a>
         
         
         <h3>Add List Page</h3>
@@ -44,7 +45,7 @@
             <table class="tbl-half">
                 <tr>
                     <td>List Name: </td>
-                    <td><input type="text" name="list_name" placeholder="Type list name here" required="required" /></td>
+                    <td><input type="text" name="list_name" placeholder="Type list name here" required/></td>
                 </tr>
                 <tr>
                     <td>List Description: </td>
@@ -76,7 +77,6 @@
         $list_name = $_POST['list_name'];
         $list_description = $_POST['list_description'];
         
-      
         //Check whether database is connected or not
         /*
         if($db_select==true)
@@ -85,9 +85,11 @@
         }
         */
         //SQL Query to Insert data into database
+        $userID = $_SESSION["UserID"];
         $sql = "INSERT INTO tbl_lists SET 
             list_name = '$list_name',
-            list_description = '$list_description'
+            list_description = '$list_description',
+            UserID = '$userID'";
         ";
         
         //Execute Query and Insert into Database
