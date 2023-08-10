@@ -1,6 +1,63 @@
 <?php 
     include('../config.php');
 ?>
+<?php 
+
+//Check whether the SAVE button is clicked or not
+if(isset($_POST['submit']))
+{
+    //echo "Button Clicked";
+    //Get all the Values from Form
+    $task_name = $_POST['task_name'];
+    $task_description = $_POST['task_description'];
+    $category = $_POST['category'];
+    $list_id = $_POST['list_id'];
+    $priority = $_POST['priority'];
+    $deadline = mysqli_real_escape_string($conn, $_POST["deadline"]);
+    $DueDate = mysqli_real_escape_string($conn, $_POST["DueDate"]); 
+   
+   
+    $user_id=$_SESSION['userId'];
+   
+    //CReate SQL Query to INSERT DATA into DAtabase
+    $sql2 = "INSERT INTO tbl_tasks (UserID, task_name, task_description,CategoryID, priority, deadline, DueDate) VALUES('$user_id', '$task_name', '$task_description', '$category', '$priority', '$deadline', '$DueDate')";
+    
+    //Execute Query
+    mysqli_query($conn, $sql2);
+   /* $sql4='SELECT * FROM tbl_tasks WHERE  UserID ='.$user_id.' AND 
+    task_name = '.$task_name.' AND
+    task_description = '.$task_description.' AND
+    priority = '.$priority.' AND
+    deadline = '.$deadline.' AND
+    DueDate = '.$DueDate.'';
+    $res4 = mysqli_query($conn, $sql4);
+    if ($res4) {
+        $row = mysqli_fetch_assoc($res4);
+        
+        if ($row) {
+            $task_id = $row['task_id'];
+            }}*/
+            $task_id=$conn->insert_id;
+
+    if($list_id==""){
+        $list_id=NULL;
+
+    }
+    else{
+        $sql3 = 'INSERT INTO contient SET 
+        task_id ='.$task_id.',
+        list_id = '.$list_id.'
+    ';
+    $res3 = mysqli_query($conn, $sql3);
+    }
+    
+    //Check whetehre the query executed successfully or not
+  
+        header('location:../home.php');
+    
+}
+
+?>
 
 <html>
     <head>
@@ -14,7 +71,7 @@
         
         <h1>TASK MANAGER</h1>
         
-        <a class="btn-secondary" href="index.php">Home</a>
+        <a class="btn-secondary" href="../home.php">Home</a>
         
         <h3>Add Task Page</h3>
         
@@ -42,17 +99,29 @@
                     <td>Task Description: </td>
                     <td><textarea name="task_description" placeholder="Type Task Description"></textarea></td>
                 </tr>
+                <tr>
+                    <td>Category: </td>
+                    <td>
+                        <select name="category">
+                            <option value="1">To Do</option>
+                            <option value="2">Doing</option>
+                            <option value="3">Done</option>
+                        </select>
+                    </td>
+                </tr>
                 
                 <tr>
                     <td>Select List: </td>
                     <td>
+                    
                         <select name="list_id">
-                            
+                            <option value=""></option>
                             <?php 
                                 
                                 
                                 //SQL query to get the list from table
-                                $sql = "SELECT * FROM tbl_lists";
+                                $user_id=$_SESSION["userId"];
+                                $sql = "SELECT * FROM tbl_lists where UserID = '$user_id'";
                                 
                                 //Execute Query
                                 $res = mysqli_query($conn, $sql);
@@ -76,13 +145,7 @@
                                             <?php
                                         }
                                     }
-                                    else
-                                    {
-                                        //Display None as option
-                                        ?>
-                                        <option value="0">None</option>p
-                                        <?php
-                                    }
+                                   
                                     
                                 }
                             ?>
@@ -113,7 +176,7 @@
                 </tr>
                 
                 <tr>
-                    <td><input class="btn-primary btn-lg" type="submit" name="submit" value="SAVE" /></td>
+                    <td><input  id="submit" class="btn-primary btn-lg" type="submit" name="submit" value="SAVE" /></td>
                 </tr>
                 
             </table>
@@ -146,7 +209,9 @@
             task_name = '$task_name',
             task_description = '$task_description',
             list_id = $list_id,
-            priority = '$priority'
+            priority = '$priority',
+            deadline = '$deadline',
+            DueDate = $DueDate;
         ";
         
         //Execute Query

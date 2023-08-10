@@ -5,7 +5,7 @@
 <html>
 
     <head>
-        <title>Tasks</title>
+        <title>Task MANAGER</title>
         <link rel="stylesheet" href="css/style.css" />
     </head>
     
@@ -41,7 +41,7 @@
                     $list_name = $row2['list_name'];
                     ?>
                     
-                    <a href="manage-tasks.php?list_id=<?php echo $list_id; ?>"><?php echo $list_name; ?></a>
+                    <a href="<?php  ?>list-task.php?list_id=<?php echo $list_id; ?>"><?php echo $list_name; ?></a>
                     
                     <?php
                     
@@ -50,8 +50,8 @@
             
         ?>
         
-        <a href="">Tasks</a>
-        <a href="manage-list.php">Lists</a>
+        
+        <a href="manage-list.php">Manage Lists</a>
     </div>
     <!-- Menu Ends Here -->
     

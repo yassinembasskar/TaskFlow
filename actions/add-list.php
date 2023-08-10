@@ -15,7 +15,7 @@
         <h1>TASK MANAGER</h1>
         
         <a class="btn-secondary" href="index.php">home</a>
-        <a class="btn-secondary" href="manage-tasks.php">Tasks</a>
+        <a class="btn-secondary" href="home.php">Tasks</a>
         <a class="btn-secondary" href="manage-lists.php">Lists</a>
         
         
@@ -105,7 +105,7 @@
             $_SESSION['add'] = "List Added Successfully";
             
             //Redirect to Manage List Page
-            header("location:http://localhost/othmane_projet1/taskmanager/manage-list.php");
+            header("location:manage-list.php");
             
             
         }
@@ -118,7 +118,7 @@
             $_SESSION['add_fail'] = "Failed to Add List";
             
             //REdirect to Same Page
-            header("location:http://localhost/othmane_projet1/taskmanager/manage-list.php");
+            header("location:manage-list.php");
         }
         
     }
